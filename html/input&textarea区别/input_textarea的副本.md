@@ -1,0 +1,24 @@
+### 实现思路
+
+内层div在高度不到外层高度时，正常输入，高度超过时，内层div设置成position:absolute;bottom:0。
+
+### 知识点
+
+#### 英文不换行问题：
+使用 word-break: break-all;
+
+#### js原生操作css：
+方法一：批量
+elm.setAttribute('style','position:absolute; bottom: 0');
+
+方法二：style对象
+elm.style.color = 'red';
+
+方法三：CSSStyleDeclaration对象的cssText属性和setProperty()、removeProperty等方法
+elm.style.setProperty('color', 'green', 'important');
+
+#### 获取key点击
+window.onkeydown = function(e){
+	e.key // 键名：a, Backspace, ArrowLeft...
+	e.keyCode // 键号：8-删除，37-40(左上右下)
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		.container {
+			position: relative;
+			height: 90px;
+			width: 90px;
+			border: 1px solid #ccc;
+			word-break: break-all;
+			overflow: hidden;
+		}
+	</style>
+</head>
+<body>
+	<input type="text" />
+	<textarea></textarea>
+	<div class="container">
+		<div class="words"></div>
+	</div>
+	<script>
+		var oWd = document.getElementsByClassName("words")[0];
+		window.onkeydown = function(e){
+			if(e.keyCode === 8){
+				oWd.innerHTML = oWd.innerHTML.substring(0,oWd.innerHTML.length-1);
+			} else {
+				oWd.innerHTML += e.key;
+			}
+			if(oWd.clientHeight > 90){
+				oWd.setAttribute('style','position: absolute; bottom: 0;');
+			}
+		};
+	</script>
+</body>
+</html>
