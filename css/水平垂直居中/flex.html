@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+	div.parent {
+		display: flex;
+		/* 上下居中 */
+		align-items: center;
+		/* 左右居中 */
+		justify-content: center; 
+	}
+    div.child {
+		/* 辅助 */
+		width: 200px; height: 200px; 
+		background-color: red;
+	}
+    </style>
+</head>
+<body>
+	<div class="parent">
+		<div class="child"></div>
+	</div>
+	<script>
+		// 父级高度
+		var oPn = document.getElementsByClassName('parent')[0];
+		oPn.style.height = window.innerHeight + 'px';
+	</script>
+</body>
+</html>
