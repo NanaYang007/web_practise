@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+	<script>
+		var arr = [13,6,3,1,12,9,5,8,7,23,6,8,9];
+		var temp;
+		for(var i=0, len=arr.length; i<len; i++){
+			for(var j=0; j< arr.length-i-1; j++){
+				if(arr[j] > arr[j+1]){
+					temp = arr[j];
+					arr[j] = arr[j+1];
+					arr[j+1] = temp;
+				}
+			}
+		}
+		console.log(arr);
+	</script>
+</body>
+</html>
