@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+	<button id="regular">i m regular</button>
+	<button id="delay">delay</button>
+	<button id="atonce">at once</button>
+	<script>
+		var regular = document.getElementById('regular');
+		var delay = document.getElementById('delay');
+		var atonce = document.getElementById('atonce');
+		// 正常执行
+		regular.addEventListener('click', function(){
+			doConsole();
+		});
+		// 防抖 - 延迟执行
+		var delayFn = debounce_delay(()=>{
+			doConsole();
+		}, true, 1000);
+		delay.addEventListener('click', delayFn);
+		// 防抖 - 立即执行
+		var atonceFn = debounce_atonce(()=>{
+			doConsole();
+		}, false, 1000)
+		atonce.addEventListener('click',atonceFn);
+
+		function debounce_delay(fn, delay, interval){
+			var first = null;
+			var timer = null;
+			return function(...arg){
+				if(!timer){
+					timer = setTimeout(fn, interval);
+				} else {
+					clearTimeout(timer);
+					timer = setTimeout(fn, interval);
+				}
+			}
+		}
+
+		function debounce_atonce(fn, delay, internal){
+			var first = null;
+			return function(...arg){
+				if(!first){
+					first = new Date();
+					fn.apply(this, arg);
+					return;
+				}
+				var now = new Date();
+				if(now - first > internal){
+					fn.apply(this, arg);
+					first = now;
+				} else {
+					first = now;
+				}
+			}
+		}
+
+		function doConsole(){
+			console.log('click');
+		}
+	</script>
+</body>
+</html>

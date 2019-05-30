@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+	<script>
+		function throttle(fn, wait = 50){
+			var previous = new Date();
+			return function(...arg){
+				var now = new Date();
+				if(now - previous > wait){
+					previous = now;
+					fn.apply(this, arg);
+				}
+			}
+		}
+		var betterFn = throttle(()=>{console.log('fn 执行了');}, 1000);
+		var a = setInterval(betterFn, 10);
+		// clearInterval(a);
+	</script>
+</body>
+</html>
