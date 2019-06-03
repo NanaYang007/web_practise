@@ -32,5 +32,5 @@ injector.prototype.getParamNames = function (func) { // 获取方法的参数名
     return paramNames // Array
 }
 
-module.exports = injector;
+module.exports = new injector();
 

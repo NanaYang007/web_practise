@@ -6,8 +6,6 @@ let A = objs.A('aa');
 let B = objs.B('ab');
 let C = objs.C('ac');
 
-injector = new injector();
-
 // 注册被依赖项
 injector.register('A', A);
 injector.register('B', B);
